@@ -1,7 +1,9 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
 
 const config: StorybookConfig = {
-  stories: ['../app/components/**/*.stories.@(ts|tsx)'],
+  stories: [
+    "../**/**/*.stories.@(js|jsx|ts|tsx)"
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -21,9 +23,14 @@ const config: StorybookConfig = {
               loader: require.resolve("css-loader"),
               options: {
                   
-                  
+                  importLoaders: 1,
               },
-          },
+          },{
+    loader: require.resolve("postcss-loader"),
+    options: {
+    implementation: require.resolve("postcss"),
+    },
+    },
       ],
     },],
       }
